@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"
+    ></script>
+    <script defer src="./js/api.js"></script>
+    <script defer src="./js/index.js"></script>
+    <link rel="stylesheet" href="./styles/index.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
+      <!-- 상단바 -->
+      <div class="top_bar">상단바</div>
+    </header>
+    <main>
+      <div class="top_container">
+        <!-- Logo -->
+        LOGO
+      </div>
+      <div class="bottom_container">
+        <!-- trend -->
+        <span class="trend_text">트렌드</span>
+        <div class="trend_container">
+          <span class="trend_text">일간</span>
+          <div class="trend_day trend_box"></div>
+          <span class="trend_text">주간</span>
+          <div class="trend_week trend_box"></div>
+        </div>
+        <!-- Tv Movie -->
+        <div class="category">
+          <!-- 퍼옴 -->
+          <section class="wrapper">
+            <ul class="tabs">
+              <li class="active">TV</li>
+              <li>Movie</li>
+            </ul>
+
+            <ul class="tab__content">
+              <li class="active">
+                <div class="content__wrapper">
+                  <!-- tv -->
+                  <ul class="category_top">
+                    <li><a class="sort">today</a></li>
+                    <li><a class="sort">인기순</a></li>
+                    <li><a class="sort">별점순</a></li>
+                  </ul>
+                  <div class="genreContainer"></div>
+                </div>
+              </li>
+              <li>
+                <div class="content__wrapper">
+                  <!-- 영화 -->
+                  <ul class="category_top">
+                    <li><a class="sort">상영중</a></li>
+                    <li><a class="sort">인기순</a></li>
+                    <li><a class="sort">별점순</a></li>
+                    <li><a class="sort">급상승</a></li>
+                  </ul>
+                  <div class="genreContainer"></div>
+                </div>
+              </li>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </main>
+    <footer></footer>
+  </body>
+</html>
