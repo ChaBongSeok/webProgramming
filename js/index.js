@@ -1,17 +1,12 @@
-const trend_day = document.querySelector(".trend-day");
-const trend_week = document.querySelector(".trend-week");
+const trend_tv = document.querySelector(".trend-tv");
+const trend_movie = document.querySelector(".trend-movie");
 
-const category = {
-  TV: 0,
-  MOVIE: 1,
-};
-
-const displayTrend = async (api_function, location) => {
+const displayTrend = async (api_function, location, category) => {
   const data = await api_function();
-  data.map((trend) => {
+  data.forEach((trend) => {
     const { poster_path, id } = trend;
     const link = document.createElement("a");
-    link.href = `detail.html?id=${id}`;
+    link.href = `detail.html?id=${id}&category_id=${category}`;
     link.className = "trend-content";
     const img = document.createElement("img");
     img.src = getImagePath(poster_path, 200);
@@ -35,9 +30,9 @@ const displayGenre = async (api_function, category) => {
   });
 };
 
-const init = () => {
-  displayTrend(trend.getTrend_day, trend_day);
-  displayTrend(trend.getTrend_week, trend_week);
+const init = async () => {
+  displayTrend(trend.getTrend_tv, trend_tv, category.tv);
+  displayTrend(trend.getTrend_movie, trend_movie, category.movie);
 };
 
 init();

@@ -8,7 +8,7 @@ const getTmdbData = async (path, query = "", obj_dst = "results") => {
       `https://${TMDB_MAIN_ADDRESS}/3${path}?api_key=${API_KEY}${query}`
     );
     if (response.status == 200) {
-      return response.data[`${obj_dst}`];
+      return obj_dst ? response.data[`${obj_dst}`] : response.data;
     }
   } catch (e) {
     // TODO
@@ -20,6 +20,8 @@ const getImagePath = (path, width = 200) =>
   `https://image.tmdb.org/t/p/w${width}${path}`;
 
 const movie = {
+  getDetail: async (movieId) =>
+    await getTmdbData(`/movie/${movieId}`, `&language=${LANGUAGE}`, null),
   getNowPlaying: async (page) =>
     await getTmdbData(
       "/movie/now_playing",
@@ -48,9 +50,22 @@ const movie = {
     ),
   getGenre: async () =>
     await getTmdbData("/genre/movie/list", `&language=${LANGUAGE}`, "genres"),
+  getUrlsOfVideo: async (movieId) => {
+    const movies = await getTmdbData(
+      `/movie/${movieId}/videos`,
+      `&language=${LANGUAGE}`
+    );
+    const urls = movies.map((movie) => {
+      const { id } = movie;
+      return `https://www.youtube.com/watch?v=${id}`;
+    });
+    return urls;
+  },
 };
 
 const tvShow = {
+  getDetail: async (tvId) =>
+    await getTmdbData(`/tv/${tvId}`, `&language=${LANGUAGE}`, null),
   getAiringToday: async (page) =>
     await getTmdbData("/tv/airing_today", `&language=${LANGUAGE}&page=${page}`),
   getPopular: async (page) =>
@@ -65,9 +80,20 @@ const tvShow = {
     ),
   getGenre: async () =>
     await getTmdbData("/genre/tv/list", `&language=${LANGUAGE}`, "genres"),
+  getUrlsOfVideo: async (tvId) => {
+    const shows = await getTmdbData(
+      `/tv/${tvId}/videos`,
+      `&language=${LANGUAGE}`
+    );
+    const urls = shows.map((show) => {
+      const { id } = show;
+      return `https://www.youtube.com/watch?v=${id}`;
+    });
+    return urls;
+  },
 };
 
 const trend = {
-  getTrend_day: async () => await getTmdbData("/trending/all/day"),
-  getTrend_week: async () => await getTmdbData("/trending/all/week"),
+  getTrend_tv: async () => await getTmdbData("/trending/tv/week"),
+  getTrend_movie: async () => await getTmdbData("/trending/movie/week"),
 };

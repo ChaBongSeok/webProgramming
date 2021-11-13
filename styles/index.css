@@ -142,8 +142,8 @@ main {
   align-items: center;
 }
 
-.trend-day-box,
-.trend-week-box {
+.trend-tv-box,
+.trend-movie-box {
   width: 100%;
   z-index: 3;
   position: relative;
@@ -170,16 +170,16 @@ main {
   background-color: black;
 }
 
-.trend-day-box:hover .trends::-webkit-scrollbar-thumb {
+.trend-tv-box:hover .trends::-webkit-scrollbar-thumb {
   visibility: visible;
 }
 
-.trend-week-box:hover .trends::-webkit-scrollbar-thumb {
+.trend-movie-box:hover .trends::-webkit-scrollbar-thumb {
   visibility: visible;
 }
 
-.trend-day-title,
-.trend-week-title {
+.trend-tv-title,
+.trend-movie-title {
   font-size: 25px;
   color: #cfbc77;
   position: absolute;

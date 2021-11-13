@@ -1,0 +1,48 @@
+@import "./reset.css";
+
+html {
+  background: #000000;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+body {
+  background: #000000;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  z-index: 0;
+}
+
+.back-image {
+  position: absolute;
+  width: 100%;
+  height: 40em;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.4;
+}
+
+.detail-top-row {
+  width: 70%;
+  position: relative;
+  display: flex;
+  top: 25em;
+  left: 15em;
+}
+
+.infobox {
+  margin-left: 5em;
+  display: flex;
+  flex-direction: column;
+}
+
+.info-title {
+  color: aliceblue;
+  text-shadow: black 3px 3px;
+  font-size: 3em;
+}
+
+.info-overview {
+  color: bisque;
+  font-size: 1.5em;
+  margin-top: 1.5em;
+  text-shadow: black 2px 2px;
+}
