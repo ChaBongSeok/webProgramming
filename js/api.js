@@ -1,6 +1,6 @@
 const API_KEY = "6434c249f9a6bef6cfb5bb4aa624e097";
 const TMDB_MAIN_ADDRESS = "api.themoviedb.org";
-const LANGUAGE = "ko";
+const LANGUAGE = "ko-KR";
 
 const getTmdbData = async (path, query = "", obj_dst = "results") => {
   try {
@@ -51,13 +51,22 @@ const movie = {
   getGenre: async () =>
     await getTmdbData("/genre/movie/list", `&language=${LANGUAGE}`, "genres"),
   getUrlsOfVideo: async (movieId) => {
-    const movies = await getTmdbData(
-      `/movie/${movieId}/videos`,
-      `&language=${LANGUAGE}`
-    );
+    const movies = await getTmdbData(`/movie/${movieId}/videos`);
     const urls = movies.map((movie) => {
       const { id } = movie;
-      return `https://www.youtube.com/watch?v=${id}`;
+      return `https://www.youtube.com/embed/watch?v/${id}`;
+    });
+    return urls;
+  },
+  getPostersUrl: async (movieId) => {
+    const posters = await getTmdbData(
+      `/movie/${movieId}/images`,
+      "",
+      "posters"
+    );
+    const urls = posters.map((poster) => {
+      const { file_path } = poster;
+      return getImagePath(file_path);
     });
     return urls;
   },
@@ -81,13 +90,18 @@ const tvShow = {
   getGenre: async () =>
     await getTmdbData("/genre/tv/list", `&language=${LANGUAGE}`, "genres"),
   getUrlsOfVideo: async (tvId) => {
-    const shows = await getTmdbData(
-      `/tv/${tvId}/videos`,
-      `&language=${LANGUAGE}`
-    );
+    const shows = await getTmdbData(`/tv/${tvId}/videos`);
     const urls = shows.map((show) => {
       const { id } = show;
-      return `https://www.youtube.com/watch?v=${id}`;
+      return `https://www.youtube.com/embed/watch?v/${id}`;
+    });
+    return urls;
+  },
+  getPostersUrl: async (tvId) => {
+    const posters = await getTmdbData(`/tv/${tvId}/images`, "", "posters");
+    const urls = posters.map((poster) => {
+      const { file_path } = poster;
+      return getImagePath(file_path);
     });
     return urls;
   },

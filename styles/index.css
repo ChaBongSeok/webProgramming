@@ -17,6 +17,14 @@ main {
   align-items: center;
 }
 
+main section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .logoImage {
   float: left;
   position: absolute;
@@ -48,15 +56,7 @@ main {
   margin-right: 2rem;
 }
 
-.center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-}
-
 .back-image {
-  top: 25px;
   background-image: url("https://picsum.photos/1000/1000");
   background-color: #cccccc;
   width: 100%;
@@ -64,7 +64,7 @@ main {
   background-position: center;
   background-repeat: no-repeat;
   background-size: 50%;
-  position: relative;
+
   opacity: 0.63;
 }
 
@@ -75,26 +75,11 @@ main {
 .title-text {
   text-align: center;
   position: absolute;
-  top: 70%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   color: white;
 }
 
-.contentButton {
-  position: relative;
-  top: 50px;
-  background: #fbc500;
-  border-color: #fbc500;
-  margin: auto 50px;
-  width: 20rem;
-  height: 10rem;
-  font-size: 200%;
-}
-
-.trend-container {
+.section-container {
   width: 100%;
-  height: 800px;
   margin: 150px 0px 100px 0px;
   display: flex;
   flex-direction: column;
@@ -103,9 +88,13 @@ main {
   position: relative;
 }
 
+.trend-container {
+  height: 50em;
+}
+
 .trend-image {
   width: 100%;
-  height: 800px;
+  height: 50em;
   background-image: url(../images/flim.png);
   position: absolute;
   z-index: 1;
@@ -114,19 +103,18 @@ main {
   background-size: 100% 800px;
 }
 
-.trend-title-box {
+.section-title-box {
   width: 90%;
-  height: 50px;
-  top: -50px;
+  top: -2em;
   position: absolute;
-  font-size: 40px;
+  font-size: 3em;
 }
 
-.trend-title-box > i {
+.section-title-box > i {
   color: #fbc500;
 }
 
-.trend-title {
+.section-title {
   color: #cfbc77;
 }
 
@@ -180,7 +168,7 @@ main {
 
 .trend-tv-title,
 .trend-movie-title {
-  font-size: 25px;
+  font-size: 2em;
   color: #cfbc77;
   position: absolute;
   top: -40px;

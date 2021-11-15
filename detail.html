@@ -6,6 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./styles/detail.css" />
 
+    <!-- fontawesome -->
+    <script
+      defer
+      src="https://kit.fontawesome.com/d6368aa91c.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- JavaScript File -->
     <script defer src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script defer src="./js/category.js"></script>
     <script defer src="./js/api.js"></script>
@@ -16,15 +24,45 @@
   <body>
     <header>
       <div class="back-image"></div>
-      <section class="detail-top-row">
+      <section class="detail-header-row">
         <img class="poster-image" alt="poster" />
         <div class="infobox">
           <span class="info-title"></span>
-          <span class="info-overview"></span>
+          <div class="info-average-box">
+            <div class="average-column">
+              <i class="fas fa-star"></i>
+              <span class="average-value"></span>
+            </div>
+            <div class="average-column">
+              <i class="fas fa-vote-yea"></i>
+              <span class="average-vote-count"></span>
+            </div>
+          </div>
+          <div class="info-status"></div>
         </div>
       </section>
     </header>
-    <main></main>
+    <main>
+      <section class="detail-main-row">
+        <article class="overview-container">
+          <span class="article-title">개요</span>
+          <div class="article-main overview-box"></div>
+        </article>
+
+        <article class="genre-container">
+          <span class="article-title">장르</span>
+          <div class="article-main">
+            <ul class="genre-list"></ul>
+          </div>
+        </article>
+
+        <article class="runtime-container">
+          <span class="article-title"></span>
+          <div class="article-main runtime-box"></div>
+        </article>
+
+      </section>
+    </main>
     <footer></footer>
   </body>
 </html>

@@ -11,6 +11,14 @@ body {
   z-index: 0;
 }
 
+header,
+main,
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .back-image {
   position: absolute;
   width: 100%;
@@ -20,12 +28,15 @@ body {
   opacity: 0.4;
 }
 
-.detail-top-row {
-  width: 70%;
-  position: relative;
+.detail-header-row {
+  width: 80%;
   display: flex;
-  top: 25em;
-  left: 15em;
+  margin-top: 25em;
+  z-index: 5;
+}
+
+.poster-image {
+  min-width: 200px;
 }
 
 .infobox {
@@ -40,9 +51,56 @@ body {
   font-size: 3em;
 }
 
-.info-overview {
-  color: bisque;
+.info-average-box {
+  height: fit-content;
   font-size: 1.5em;
-  margin-top: 1.5em;
-  text-shadow: black 2px 2px;
+  margin-top: 2em;
+  display: flex;
+}
+
+.average-column {
+  margin-right: 3em;
+}
+
+.average-column i {
+  color: #fbc500;
+}
+
+.average-column span {
+  color: aliceblue;
+}
+
+.info-status {
+  margin-top: 2em;
+  color: aliceblue;
+  font-size: 1.5em;
+}
+
+.detail-main-row {
+  width: 80%;
+  height: fit-content;
+  margin-top: 3em;
+}
+
+article {
+  margin-bottom: 3em;
+}
+
+.article-title {
+  color: #fbc500;
+  font-size: 2em;
+}
+
+.article-main {
+  color: bisque;
+  margin-top: 1em;
+  font-size: 1.1em;
+}
+
+.genre-list {
+  display: flex;
+}
+
+.genre-list li {
+  margin-right: 0.5em;
 }
