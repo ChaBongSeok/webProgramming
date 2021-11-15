@@ -23,7 +23,7 @@
 
     <!-- JavaScript File -->
     <script defer src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script defer src="./js/category.js"></script>
+    <script defer src="./js/categoryObj.js"></script>
     <script defer src="./js/api.js"></script>
     <script defer src="./js/index.js"></script>
 
@@ -132,16 +132,16 @@
       </div>
       <div class="trend-image"></div>
       <div class="trend-content-box">
-        <div class="trend-tv-box">
+        <article class="trend-tv-box">
           <span class="trend-tv-title">TV</span>
           <div class="trend-tv trends">
           </div>
-        </div>
-        <div class="trend-movie-box">
+        </article>
+        <article class="trend-movie-box">
           <span class="trend-movie-title">MOVIE</span>
           <div class="trend-movie trends">
           </div>
-        </div>
+        </article>
       </div>
     </section>
     
@@ -151,7 +151,40 @@
         <span class="category-title section-title">카테고리</span>
       </div>
       <div class="category-box">
+        <article class="category-tv-box">
+          <span class="category-tv-title">TV</span>
+          <div class="sorting-tv-container">
+            <span>정렬</span>
+            <div class="sorting-tv sortings">
+              <a href="category.html?category=0&sorting=0">금일 방영</a>
+              <a href="category.html?category=0&sorting=1">인기순</a>
+              <a href="category.html?category=0&sorting=2">평가순</a>
+            </div>
+          </div>
+          <div class="genre-tv-container">
+            <span>장르</span>
+            <div class="genre-tv genres"></div>
+          </div>
 
+        </article>
+        <hr>
+        <article class="category-movie-box">
+          <span class="category-movie-title">MOVIE</span>
+          <div class="sorting-movie-container">
+            <span>정렬</span>
+            <div class="sorting-movie sortings">
+              <a href="category.html?category=1&sorting=3">상영중</a>
+              <a href="category.html?category=1&sorting=1">인기순</a>
+              <a href="category.html?category=1&sorting=2">평가순</a>
+              <a href="category.html?category=1&sorting=4">급상승</a>
+            </div>
+          </div>
+          <div class="genre-movie-container">
+            <span>장르</span>
+            <div class="genre-movie genres"></div>
+          </div>
+
+        </article>
       </div>
     </section> 
   </main>

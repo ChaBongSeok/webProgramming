@@ -1,4 +1,7 @@
-const category = {
-  movie: 0,
-  tv: 1,
+const getParam = (param) => {
+  const search = window.location.search;
+  const params = new URLSearchParams(search);
+  return params.get(`${param}`);
 };
+
+console.log(getParam("genreName"));
