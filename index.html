@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script derfer src="./js/logout.js"></script>
+    
+    <!-- bootstrap -->
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <!-- JavaScript Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- fontawesome-->
+    <script
+      src="https://kit.fontawesome.com/d6368aa91c.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <link rel="stylesheet" href="./index.css" />
+
+    <!-- TITLE IMAGE -->
+    <link href="./images/movieagora_icon.ico" rel="shortcut icon" type="image/x-icon">
+    <title>MOVIE AGORA</title>
+
+  </head>
+
+  <body>
+    <!-- LOGO -->
+    <div>
+      <a href="./index.html">
+        <img
+          src="./images/movieagora_icon.png"
+          class="logoImage"
+          alt="logoImage"
+        />
+        <h3 class="logoName">MOVIE AGORA</h3>
+      </a>
+
+      <div>
+        <button type="button" onclick="location.href='./html/myPage.html' ">마이페이지</button>
+      </div><br>
+
+      <div>
+        <button type="button" onclick="logout()">로그아웃</button>
+      </div>
+
+      <!-- Log In Button -->
+      <div class="d-flex flex-row-reverse">
+        <button type="button" class="btn btn-warning loginButton mt-25 mr-30" data-bs-toggle="modal"
+        data-bs-target="#loginModal">Log In</button>
+      </div>
+      
+
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="loginModal"
+        tabindex="-1"
+        aria-labelledby="loginModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="loginModalLabel">
+                <i class="fas fa-sign-in-alt"></i>&nbsp; Log In
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-md-6 d-grid gap-2">
+                  <button type="button" class="btn btn-outline-dark btn-sm">
+                    <i class="fab fa-google"></i>&nbsp; Log in with Google
+                  </button>
+                  <button type="button" class="btn btn-outline-dark btn-sm" onclick="location.href='./html/login.html'">
+                    <i class="far fa-envelope"></i>&nbsp; Log in with E-mail
+                  </button>
+                </div>
+                <div class="col-md-6 d-grid mx-auto">
+                  <button type="button" class="btn btn-outline-dark btn-sm" onclick="location.href='./html/signup.html'">
+                    <i class="far fa-envelope"></i>&nbsp; Sign Up with E-mail
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- TITLE -->  
+    <div class="back-image">
+    </div>
+    <div class="title-text">
+      <h1 class="title-main">MOVIE AGORA</h1><br><br>
+      <h2>현재 인기인 영화 · 드라마를 추천받고, 다른 사람들과 토론해 보세요</h3>
+      
+        <button type="button" class="btn btn-primary btn-lg contentButton">인기 영화</button>
+        <button type="button" class="btn btn-primary btn-lg contentButton">인기 드라마</button>
+    </div>
+    
+
+    <!-- Copyright Section-->
+    <div class="copyright py-4 text-center text-white">
+      <div class="container2">
+        <small>Copyright &copy; Your Website 2021</small>
+      </div>
+    </div>
+
+  </body>
+</html>
