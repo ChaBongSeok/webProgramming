@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
+
     <!-- bootstrap -->
     <!-- CSS only -->
     <link
@@ -25,8 +25,8 @@
     <script defer src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script defer src="./js/categoryObj.js"></script>
     <script defer src="./js/api.js"></script>
+    <script defer src="./js/logout.js"></script>
     <script defer src="./js/index.js"></script>
-
 
     <!-- fontawesome-->
     <script
@@ -38,164 +38,124 @@
     <link rel="stylesheet" href="./styles/index.css" />
 
     <!-- TITLE IMAGE -->
-    <link href="./images/movieagora_icon.ico" rel="shortcut icon" type="image/x-icon">
+    <link
+      href="./images/movieagora_icon.ico"
+      rel="shortcut icon"
+      type="image/x-icon"
+    />
     <title>MOVIE AGORA</title>
-
   </head>
 
   <body>
-    <!-- LOGO -->
     <header>
-      <a href="./index.html">
-        <img
-          src="./images/movieagora_icon.png"
-          class="logoImage"
-          alt="logoImage"
-        />
-        <h3 class="logoName">MOVIE AGORA</h3>
-      </a>
+      <div class="header-column header-left-column">
+        <a class="logo-box" href="./index.html">
+          <img
+            src="./images/movieagora_icon.png"
+            class="logoImage"
+            alt="logoImage"
+          />
+          <h3 class="logoName">MOVIE AGORA</h3>
+        </a>
+      </div>
 
-      <!-- Log In Button -->
-      <div class="d-flex flex-row-reverse">
-        <button type="button" class="btn btn-warning loginButton mt-25 mr-30" data-bs-toggle="modal"
-        data-bs-target="#loginModal">Log In</button>
-      </div>>
-      
+      <div class="header-column header-right-column">
+        <!-- Log In Button -->
+        <button type="button" class="btn btn-warning loginButton mt-25 mr-30">
+          로그인
+        </button>
 
-      <!-- Modal -->
-      <div
-        class="modal fade"
-        id="loginModal"
-        tabindex="-1"
-        aria-labelledby="loginModalLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="loginModalLabel">
-                <i class="fas fa-sign-in-alt"></i>&nbsp; Log In
-              </h5>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div class="modal-body">
-              <div class="row">
-                <div class="col-md-6 d-grid gap-2">
-                  <button type="button" class="btn btn-outline-dark btn-sm">
-                    <i class="fab fa-google"></i>&nbsp; Log in with Google
-                  </button>
-                  <button type="button" class="btn btn-outline-dark btn-sm">
-                    <i class="far fa-envelope"></i>&nbsp; Log in with E-mail
-                  </button>
-                </div>
-                <div class="col-md-6 d-grid mx-auto">
-                  <button type="button" class="btn btn-outline-dark btn-sm">
-                    <i class="far fa-envelope"></i>&nbsp; Sign Up with E-mail
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                Close
-              </button>
-            </div>
-          </div>
-        </div>
+        <!-- Log Out Button -->
+        <button type="button" class="btn btn-warning logoutButton mt-25 mr-30">
+          로그아웃
+        </button>
+
+        <!-- My Page Button -->
+        <button type="button" class="btn btn-warning myPageButton mt-25 mr-30">
+          마이페이지
+        </button>
       </div>
     </header>
 
-
     <!-- TITLE -->
-  <main>
-    <section>
-      <div class="back-image">
-      </div>
-      <div class="title-text">
-        <h1 class="title-main">MOVIE<br>AGORA</h1><br><br>
-        <h2>현재 인기인 영화 · 드라마를 추천받고, 다른 사람들과 토론해 보세요</h3>
-      </div>
-    </section>
-    <section class="trend-container section-container">
-      <div class="trend-title-box section-title-box">
-        <i class="fas fa-poll"></i>
-        <span class="trend-title section-title">트렌드</span>
-      </div>
-      <div class="trend-image"></div>
-      <div class="trend-content-box">
-        <article class="trend-tv-box">
-          <span class="trend-tv-title">TV</span>
-          <div class="trend-tv trends">
-          </div>
-        </article>
-        <article class="trend-movie-box">
-          <span class="trend-movie-title">MOVIE</span>
-          <div class="trend-movie trends">
-          </div>
-        </article>
-      </div>
-    </section>
-    
-    <section class="category-container section-container">
-      <div class="category-title-box section-title-box">
-        <i class="fas fa-sort"></i>
-        <span class="category-title section-title">카테고리</span>
-      </div>
-      <div class="category-box">
-        <article class="category-tv-box">
-          <span class="category-tv-title">TV</span>
-          <div class="sorting-tv-container">
-            <span>정렬</span>
-            <div class="sorting-tv sortings">
-              <a href="category.html?category=0&sorting=0">금일 방영</a>
-              <a href="category.html?category=0&sorting=1">인기순</a>
-              <a href="category.html?category=0&sorting=2">평가순</a>
+    <main>
+      <section>
+        <div class="back-image"></div>
+        <div class="title-text">
+          <h1 class="title-main">MOVIE<br />AGORA</h1>
+          <br /><br />
+          <h2>
+            현재 인기인 영화 · 드라마를 추천받고, 다른 사람들과 토론해 보세요
+          </h2>
+        </div>
+      </section>
+      <section class="trend-container section-container">
+        <div class="trend-title-box section-title-box">
+          <i class="fas fa-poll"></i>
+          <span class="trend-title section-title">트렌드</span>
+        </div>
+        <div class="trend-image"></div>
+        <div class="trend-content-box">
+          <article class="trend-tv-box">
+            <span class="trend-tv-title">TV</span>
+            <div class="trend-tv trends"></div>
+          </article>
+          <article class="trend-movie-box">
+            <span class="trend-movie-title">MOVIE</span>
+            <div class="trend-movie trends"></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="category-container section-container">
+        <div class="category-title-box section-title-box">
+          <i class="fas fa-sort"></i>
+          <span class="category-title section-title">카테고리</span>
+        </div>
+        <div class="category-box">
+          <article class="category-tv-box">
+            <span class="category-tv-title">TV</span>
+            <div class="sorting-tv-container">
+              <span>정렬</span>
+              <div class="sorting-tv sortings">
+                <a href="./html/category.html?category=2&sorting=1"
+                  >금일 방영</a
+                >
+                <a href="./html/category.html?category=2&sorting=2">인기순</a>
+                <a href="./html/category.html?category=2&sorting=3">평가순</a>
+              </div>
             </div>
-          </div>
-          <div class="genre-tv-container">
-            <span>장르</span>
-            <div class="genre-tv genres"></div>
-          </div>
-
-        </article>
-        <hr>
-        <article class="category-movie-box">
-          <span class="category-movie-title">MOVIE</span>
-          <div class="sorting-movie-container">
-            <span>정렬</span>
-            <div class="sorting-movie sortings">
-              <a href="category.html?category=1&sorting=3">상영중</a>
-              <a href="category.html?category=1&sorting=1">인기순</a>
-              <a href="category.html?category=1&sorting=2">평가순</a>
-              <a href="category.html?category=1&sorting=4">급상승</a>
+            <div class="genre-tv-container">
+              <span>장르</span>
+              <div class="genre-tv genres"></div>
             </div>
-          </div>
-          <div class="genre-movie-container">
-            <span>장르</span>
-            <div class="genre-movie genres"></div>
-          </div>
+          </article>
+          <hr />
+          <article class="category-movie-box">
+            <span class="category-movie-title">MOVIE</span>
+            <div class="sorting-movie-container">
+              <span>정렬</span>
+              <div class="sorting-movie sortings">
+                <a href="./html/category.html?category=1&sorting=4">상영중</a>
+                <a href="./html/category.html?category=1&sorting=2">인기순</a>
+                <a href="./html/category.html?category=1&sorting=3">평가순</a>
+                <a href="./html/category.html?category=1&sorting=5">급상승</a>
+              </div>
+            </div>
+            <div class="genre-movie-container">
+              <span>장르</span>
+              <div class="genre-movie genres"></div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
 
-        </article>
+    <!-- Copyright Section-->
+    <footer class="copyright py-4 text-center text-white">
+      <div>
+        <small>Copyright &copy; Movie Agora 2021</small>
       </div>
-    </section> 
-  </main>
-    
-
-  <!-- Copyright Section-->
-  <footer class="copyright py-4 text-center text-white">
-    <div class="container2">
-      <small>Copyright &copy; Your Website 2021</small>
-    </div>
-  </footer>
-
+    </footer>
   </body>
 </html>

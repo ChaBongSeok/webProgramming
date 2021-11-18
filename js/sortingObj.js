@@ -1,7 +1,7 @@
 const sorting = {
-    airingToday: 0,
-    popular: 1,
-    topRated: 2,
-    nowPlaying: 3,
-    upComing: 4
-}
+  airingToday: 1,
+  popular: 2,
+  topRated: 3,
+  nowPlaying: 4,
+  upComing: 5,
+};

@@ -9,10 +9,36 @@ body {
   background: #000000;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   z-index: 0;
+  overflow: overlay;
+}
+
+body::-webkit-scrollbar {
+  background-color: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: rgb(55, 51, 58);
+}
+
+header,
+main {
+  display: flex;
+}
+
+header {
+  height: 4em;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em;
+}
+
+.logo-box {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
 }
 
 main {
-  display: flex;
   flex-direction: column;
   align-items: center;
 }
@@ -26,34 +52,27 @@ main section {
 }
 
 .logoImage {
-  float: left;
-  position: absolute;
   width: 56px;
   height: 60px;
-  left: 35px;
-  top: 15px;
 }
 
 .logoName {
   color: #fbc500;
-  position: absolute;
-
-  height: 28px;
-  left: 95px;
-  top: 30px;
-
   font-family: Roboto;
   font-style: normal;
   font-weight: normal;
   font-size: 25px;
   line-height: 28px;
-  display: inline-block;
 }
 
-.loginButton {
-  display: inline-block;
-  margin-top: 1.3rem;
-  margin-right: 2rem;
+.header-right-column {
+  display: flex;
+  width: fit-content;
+}
+
+.header-right-column button {
+  display: none;
+  margin-right: 0.3em;
 }
 
 .back-image {
@@ -64,12 +83,11 @@ main section {
   background-position: center;
   background-repeat: no-repeat;
   background-size: 50%;
-
   opacity: 0.63;
 }
 
 .title-main {
-  font-size: 500%;
+  font-size: 5em;
 }
 
 .title-text {

@@ -1,5 +1,5 @@
 const getParam = (param) => {
-  const search = window.location.search;
+  const search = location.search;
   const params = new URLSearchParams(search);
   return params.get(`${param}`);
 };
@@ -74,7 +74,6 @@ const setPoster = async (contentId, categoryId) => {
   } else {
     urls = await movie.getPostersUrl(contentId);
   }
-  urls.forEach(url => console.log(url));
 };
 
 const displayMovieDetail = (data, contentId, categoryId) => {
@@ -91,7 +90,7 @@ const displayMovieDetail = (data, contentId, categoryId) => {
   } = data;
   setPageTitle(title);
   setBgImage(getImagePath(backdrop_path, 500));
-  setPosterImage(getImagePath(poster_path, 200));
+  setPosterImage(getImagePath(poster_path));
   setInfoTitle(title);
   setOverview(overview);
   setGenreList(genres);
@@ -115,7 +114,7 @@ const displayTvDetail = (data, contentId, categoryId) => {
   } = data;
   setPageTitle(name);
   setBgImage(getImagePath(backdrop_path, 500));
-  setPosterImage(getImagePath(poster_path, 200));
+  setPosterImage(getImagePath(poster_path));
   setInfoTitle(name);
   setOverview(overview);
   setGenreList(genres);
