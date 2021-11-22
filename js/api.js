@@ -2,6 +2,13 @@ const API_KEY = "6434c249f9a6bef6cfb5bb4aa624e097";
 const TMDB_MAIN_ADDRESS = "api.themoviedb.org";
 const LANGUAGE = "ko-KR";
 
+/**
+ *
+ * @param {string} path
+ * @param {string} query
+ * @param {string} obj_dst
+ * @returns {array}
+ */
 const getTmdbData = async (path, query = "", obj_dst = "results") => {
   try {
     const response = await axios.get(
@@ -9,10 +16,11 @@ const getTmdbData = async (path, query = "", obj_dst = "results") => {
     );
     if (response.status == 200) {
       return obj_dst ? response.data[`${obj_dst}`] : response.data;
+    } else {
+      alert("데이터를 불러오지 못하였습니다.");
     }
   } catch (e) {
-    // TODO
-    console.log(e);
+    alert("오류 발생");
   }
 };
 

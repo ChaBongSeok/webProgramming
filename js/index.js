@@ -1,11 +1,3 @@
-const trend_tv = document.querySelector(".trend-tv");
-const trend_movie = document.querySelector(".trend-movie");
-const genre_tv = document.querySelector(".genre-tv");
-const genre_movie = document.querySelector(".genre-movie");
-const login_button = document.querySelector(".loginButton");
-const logout_button = document.querySelector(".logoutButton");
-const myPage_button = document.querySelector(".myPageButton");
-
 const displayTrend = async (apiFunction, parentNode, category) => {
   const data = await apiFunction();
   data.forEach((trend) => {
@@ -33,8 +25,16 @@ const displayGenre = async (apiFunction, parentNode, category) => {
 };
 
 const setHeaderBtn = () => {
+  const login_button = document.querySelector(".loginButton");
+  const logout_button = document.querySelector(".logoutButton");
+  const myPage_button = document.querySelector(".myPageButton");
+  login_button.addEventListener("click", loginBtnClickHandler);
+  logout_button.addEventListener("click", logoutBtnClickHandler);
+  myPage_button.addEventListener("click", myPageBtnClickHandler);
   const myEmail = localStorage.getItem("Email");
-  if (myEmail) {
+  const myPwd = localStorage.getItem("Pwd");
+
+  if (myEmail && myPwd) {
     login_button.style.display = "none";
     logout_button.style.display = "block";
     myPage_button.style.display = "block";
@@ -57,10 +57,11 @@ const myPageBtnClickHandler = () => {
 };
 
 const init = async () => {
+  const trend_tv = document.querySelector(".trend-tv");
+  const trend_movie = document.querySelector(".trend-movie");
+  const genre_tv = document.querySelector(".genre-tv");
+  const genre_movie = document.querySelector(".genre-movie");
   setHeaderBtn();
-  login_button.addEventListener("click", loginBtnClickHandler);
-  logout_button.addEventListener("click", logoutBtnClickHandler);
-  myPage_button.addEventListener("click", myPageBtnClickHandler);
   displayTrend(trend.getTrend_tv, trend_tv, category.tv);
   displayTrend(trend.getTrend_movie, trend_movie, category.movie);
   displayGenre(tvShow.getGenre, genre_tv, category.tv);

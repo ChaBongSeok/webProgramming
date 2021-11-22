@@ -13,11 +13,14 @@ body {
 }
 
 body::-webkit-scrollbar {
+  width: 0.7em;
   background-color: transparent;
 }
 
 body::-webkit-scrollbar-thumb {
-  background-color: rgb(55, 51, 58);
+  background-color: rgb(78, 73, 76);
+  border: 0.1em solid rgb(85, 78, 83);
+  border-radius: 2em;
 }
 
 header,
@@ -175,7 +178,46 @@ main section {
 .sorting-movie-container,
 .genre-tv-container,
 .genre-movie-container {
-  margin-left: 5em;
+  margin-left: 2em;
+  padding: 1em 2em;
+  width: 45%;
+  min-height: 8em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  border: 0.1em solid rgb(78, 73, 76);
+  border-radius: 0.5em;
+}
+
+.sorting-tv-container:hover,
+.sorting-movie-container:hover,
+.genre-tv-container:hover,
+.genre-movie-container:hover {
+  border-color: bisque;
+}
+
+.sortings,
+.genres {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  line-height: 1.3em;
+}
+
+.sortings a,
+.genres a {
+  text-decoration: none;
+  color: lightslategrey;
+  margin-right: 1em;
+  transition: all 0.3s ease;
+}
+
+.sortings a:hover,
+.genres a:hover {
+  font-size: 1.2em;
+  color: #cfbc77;
 }
 
 .trends {
@@ -213,6 +255,10 @@ main section {
 .category-movie-title {
   font-size: 2em;
   color: #cfbc77;
+}
+
+.trend-tv-title,
+.trend-movie-title {
   position: absolute;
   top: -2em;
   left: 0.5em;

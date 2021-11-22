@@ -4,9 +4,7 @@ const getUserInfoByemail = async () => {
 
   if (userEmail) {
     try {
-      const response = await axios.post("../php/getUserInfoByemail.php", {
-        userEmail: userEmail,
-      });
+      const response = await axios.post("../php/getUserInfoByemail.php", {userEmail});
       if (response.data) {
         //console.log(response.data); //성공여부 확인을 위해 전달된 데이터를 출력
         document.getElementById("userEmail").value = userEmail; //유저 이메일을 클라이언트로 전달

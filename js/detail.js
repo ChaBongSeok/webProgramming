@@ -8,13 +8,13 @@ const setPageTitle = (title) => {
   document.querySelector("#page-title").innerHTML = title;
 };
 
-const setBgImage = (url) => {
+const setBgImg = (url) => {
   const back_image = document.querySelector(".back-image");
   back_image.style.backgroundImage = `url(${url})`;
 };
 
-const setPosterImage = (url) => {
-  const poster_image = document.querySelector(".poster-image");
+const setRepresentativeImg = (url) => {
+  const poster_image = document.querySelector(".representative-image");
   poster_image.src = url;
 };
 
@@ -67,13 +67,19 @@ const setStatus = (status) => {
   info_status.appendChild(span);
 };
 
-const setPoster = async (contentId, categoryId) => {
+const setPosterImgs = async (contentId, categoryId) => {
   let urls;
+  const poster_box = document.querySelector(".poster-box");
   if (categoryId === category.tv) {
     urls = await tvShow.getPostersUrl(contentId);
   } else {
     urls = await movie.getPostersUrl(contentId);
   }
+  urls.forEach((url) => {
+    const img = document.createElement("img");
+    img.src = url;
+    poster_box.appendChild(img);
+  });
 };
 
 const displayMovieDetail = (data, contentId, categoryId) => {
@@ -89,15 +95,15 @@ const displayMovieDetail = (data, contentId, categoryId) => {
     status,
   } = data;
   setPageTitle(title);
-  setBgImage(getImagePath(backdrop_path, 500));
-  setPosterImage(getImagePath(poster_path));
+  setBgImg(getImagePath(backdrop_path, 500));
+  setRepresentativeImg(getImagePath(poster_path));
   setInfoTitle(title);
   setOverview(overview);
   setGenreList(genres);
   setAverageAndCnt(vote_average, vote_count);
   setRuntime(runtime, categoryId);
   setStatus(status);
-  setPoster(contentId, categoryId);
+  setPosterImgs(contentId, categoryId);
 };
 
 const displayTvDetail = (data, contentId, categoryId) => {
@@ -113,15 +119,15 @@ const displayTvDetail = (data, contentId, categoryId) => {
     status,
   } = data;
   setPageTitle(name);
-  setBgImage(getImagePath(backdrop_path, 500));
-  setPosterImage(getImagePath(poster_path));
+  setBgImg(getImagePath(backdrop_path, 500));
+  setRepresentativeImg(getImagePath(poster_path));
   setInfoTitle(name);
   setOverview(overview);
   setGenreList(genres);
   setAverageAndCnt(vote_average, vote_count);
   setRuntime(episode_run_time, categoryId);
   setStatus(status);
-  setPoster(contentId, categoryId);
+  setPosterImgs(contentId, categoryId);
 };
 
 const displayDetail = async () => {

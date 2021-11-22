@@ -10,8 +10,8 @@ const login = async () => {
       // true: 로그인 성공
       // false: 로그인 실패
       const response = await axios.post("../php/login.php", {
-        userEmail: userEmail,
-        userPwd: userPwd,
+        userEmail,
+        userPwd,
       });
 
       if (response.data === true) {

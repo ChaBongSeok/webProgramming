@@ -13,11 +13,14 @@ body {
 }
 
 body::-webkit-scrollbar {
+  width: 0.7em;
   background-color: transparent;
 }
 
 body::-webkit-scrollbar-thumb {
-  background-color: rgb(55, 51, 58);
+  background-color: rgb(78, 73, 76);
+  border: 0.1em solid rgb(85, 78, 83);
+  border-radius: 2em;
 }
 
 header,
@@ -44,7 +47,7 @@ footer {
   z-index: 5;
 }
 
-.poster-image {
+.representative-image {
   min-width: 200px;
 }
 
@@ -112,4 +115,24 @@ article {
 
 .genre-list li {
   margin-right: 0.5em;
+}
+
+.poster-box {
+  display: flex;
+  overflow-x: scroll;
+}
+
+.poster-box::-webkit-scrollbar {
+  height: 0.7em;
+  background-color: transparent;
+}
+
+.poster-box::-webkit-scrollbar-thumb {
+  visibility: hidden;
+  background-color: rgb(78, 73, 76);
+  border: 0.1em solid rgb(85, 78, 83);
+}
+
+.poster-container:hover .poster-box::-webkit-scrollbar-thumb {
+  visibility: visible;
 }

@@ -24,11 +24,11 @@ const signup = async () => {
             //생년월일이 올바르게 입력된 경우, 입력이 안된 경우
             try {
               const response = await axios.post("../php/signup.php", {
-                userEmail: userEmail,
-                userPwd: userPwd,
-                userName: userName,
-                userGender: userGender,
-                userBirth: userBirth,
+                userEmail,
+                userPwd,
+                userName,
+                userGender,
+                userBirth,
               });
               if (response.data) {
                 console.log(response.data);

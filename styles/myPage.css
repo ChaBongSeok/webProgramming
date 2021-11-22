@@ -14,11 +14,14 @@ body {
 }
 
 body::-webkit-scrollbar {
+  width: 0.7em;
   background-color: transparent;
 }
 
 body::-webkit-scrollbar-thumb {
-  background-color: rgb(55, 51, 58);
+  background-color: rgb(78, 73, 76);
+  border: 0.1em solid rgb(85, 78, 83);
+  border-radius: 2em;
 }
 
 section {
