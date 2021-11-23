@@ -14,10 +14,16 @@ const login = async () => {
         userPwd,
       });
 
-      if (response.data === true) {
+      if (response.data) {
         // 로그인 성공 시
-        localStorage.setItem("Email", userEmail); //로컬 스토리지에 로그인에 성공한 이메일을 저장합니다.
-        localStorage.setItem("Pwd", userPwd); //로컬 스토리지에 로그인에 성공한 비밀번호를 저장합니다.
+        localStorage.setItem(
+          "MovieAgora",
+          JSON.stringify({
+            ID: response.data,
+            Email: userEmail,
+            Pwd: userPwd,
+          })
+        ); //로컬 스토리지에 로그인에 성공한 계정 정보를 저장합니다.
         location.assign("../index.html");
         alert("로그인에 성공하였습니다..");
       } else {

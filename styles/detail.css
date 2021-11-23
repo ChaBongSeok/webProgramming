@@ -74,12 +74,21 @@ footer {
   margin-right: 3em;
 }
 
-.average-column i {
+.average-column i,
+.bookmark-column i {
   color: #fbc500;
 }
 
 .average-column span {
   color: aliceblue;
+}
+
+.bookmark-column i {
+  display: none;
+}
+
+.bookmark-column i:hover {
+  cursor: pointer;
 }
 
 .info-status {
@@ -107,6 +116,10 @@ article {
   color: bisque;
   margin-top: 1em;
   font-size: 1.1em;
+}
+
+.overview-box p {
+  line-height: 1.5em;
 }
 
 .genre-list {

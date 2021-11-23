@@ -1,5 +1,4 @@
 const logout = () => {
-  localStorage.removeItem("Email");
-  localStorage.removeItem("Pwd");
+  localStorage.removeItem("MovieAgora");
   location.reload();
 };

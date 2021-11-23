@@ -10,6 +10,7 @@
     <script defer src="../js/signup_onchange.js"></script>
     <script defer src="../js/signout.js"></script>
     <script defer src="../js/modify.js"></script>
+    <script defer src="../js/getAllMyBookmark.js"></script>
 
     <!-- axios -->
     <script src="https://cdn.jsdelivr.net/npm/axios@0.24.0/dist/axios.min.js"></script>
@@ -29,6 +30,13 @@
       crossorigin="anonymous"
     ></script>
 
+    <!-- TITLE IMAGE -->
+    <link
+      href="./images/movieagora_icon.ico"
+      rel="shortcut icon"
+      type="image/x-icon"
+    />
+
     <title>마이페이지</title>
   </head>
 
@@ -40,7 +48,7 @@
       <label for="tab1" onclick="getUserInfoByemail()">회원정보</label>
 
       <input id="tab2" type="radio" name="tabs" />
-      <label for="tab2">찜목록</label>
+      <label for="tab2" onclick="getAllMyBookmark()">찜목록</label>
 
       <input id="tab3" type="radio" name="tabs" />
       <label for="tab3">댓글</label>
@@ -112,7 +120,7 @@
         </form>
 
         <div>
-          <!-- 수정버튼 js 미구현 -->
+          <!-- 수정버튼 -->
           <button
             class="w-100 btn btn-lg btn-primary"
             id="signup_button"
@@ -125,7 +133,7 @@
 
       <!-- 찜목록 -->
       <section id="content2">
-        <h3 class="guide">서비스 준비중입니다.</h3>
+        <ul class="bookmark-container"></ul>
       </section>
 
       <!-- 댓글 -->

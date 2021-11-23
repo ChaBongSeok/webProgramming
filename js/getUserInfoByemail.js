@@ -1,6 +1,7 @@
 const getUserInfoByemail = async () => {
-  const userEmail = localStorage.getItem("Email"); //로컬 스토리지에 저장된 이메일 가져옮
-  const userPwd = localStorage.getItem("Pwd"); //로컬 스토리에 저장된 비밀번호 가져옮
+  const localData = JSON.parse(localStorage.getItem("MovieAgora"));
+  const userEmail = localData.Email; //로컬 스토리지에 저장된 이메일 가져옮
+  const userPwd = localData.Pwd; //로컬 스토리에 저장된 비밀번호 가져옮
 
   if (userEmail) {
     try {

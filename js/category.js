@@ -6,8 +6,6 @@ const getParam = (param) => {
   return params.get(`${param}`);
 };
 
-// console.log(getParam("genreName"));
-
 const category_id = parseInt(getParam("category")); // 영화는 0, tv는 1
 const sorting_id = parseInt(getParam("sorting")); // 정렬 콘텐츠에만 값이 있음
 const genre_id = parseInt(getParam("genreId"));
@@ -17,10 +15,10 @@ const displaySorting = async (apiFunction, parentNode) => {
   data.forEach((contents) => {
     const { poster_path, id } = contents;
     const link = document.createElement("a");
-    link.href = `detail.html?id=${id}&category_id=${category_id}`;
+    link.href = `detail.html?id=${id}&category=${category_id}`;
     link.className = "sorting-content";
     const img = document.createElement("img");
-    img.src = getImagePath(poster_path, 200);
+    img.src = getImageUrl(poster_path, 200);
     img.className = "sorting-img";
     link.appendChild(img);
     parentNode.appendChild(link);

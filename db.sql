@@ -15,3 +15,10 @@ INSERT INTO `user`
 (`userEmail`, `userPwd`, `userName`, `userGender`, `userBirth`)
 VALUES 
 ('test000@gmail.com', '111111', 'test000', '남성', '650230');
+
+CREATE TABLE `bookmark` (
+    `userId` INT NOT NULL,
+    `categoryId` INT NOT NULL,
+    `contentId` INT NOT NULL,
+    `contentName` TEXT NOT NULL
+);

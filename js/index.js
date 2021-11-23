@@ -3,10 +3,10 @@ const displayTrend = async (apiFunction, parentNode, category) => {
   data.forEach((trend) => {
     const { poster_path, id } = trend;
     const link = document.createElement("a");
-    link.href = `../html/detail.html?id=${id}&category_id=${category}`;
+    link.href = `../html/detail.html?id=${id}&category=${category}`;
     link.className = "trend-content";
     const img = document.createElement("img");
-    img.src = getImagePath(poster_path);
+    img.src = getImageUrl(poster_path);
     img.className = "trend-img";
     link.appendChild(img);
     parentNode.appendChild(link);
@@ -31,10 +31,10 @@ const setHeaderBtn = () => {
   login_button.addEventListener("click", loginBtnClickHandler);
   logout_button.addEventListener("click", logoutBtnClickHandler);
   myPage_button.addEventListener("click", myPageBtnClickHandler);
-  const myEmail = localStorage.getItem("Email");
-  const myPwd = localStorage.getItem("Pwd");
+  
+  const myId = localStorage.getItem("MovieAgora");
 
-  if (myEmail && myPwd) {
+  if (myId) {
     login_button.style.display = "none";
     logout_button.style.display = "block";
     myPage_button.style.display = "block";

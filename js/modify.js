@@ -28,7 +28,15 @@ const modify = async () => {
             });
             if (response.data) {
               console.log(response.data);
-              localStorage.setItem("Pwd", userPwd);
+              const userId = JSON.parse(localStorage.getItem("MovieAgora")).ID;
+              localStorage.setItem(
+                "MovieAgora",
+                JSON.stringify({
+                  ID: userId,
+                  Email: userEmail,
+                  Pwd: userPwd,
+                })
+              );
               alert("회원정보를 성공적으로 변경하였습니다.");
             } else {
               console.log("입력 실패");
