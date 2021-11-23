@@ -90,17 +90,21 @@ const checkedClickHandler = async (
   userId,
   contentId
 ) => {
-  const res = await axios.post("../php/removeBookmark.php", {
-    userId,
-    contentId,
-  });
+  try {
+    const res = await axios.post("../php/removeBookmark.php", {
+      userId,
+      contentId,
+    });
 
-  if (res.data) {
-    checkedBtn.style.display = "none";
-    uncheckedBtn.style.display = "block";
-    alert("북마크를 삭제하였습니다.");
-  } else {
-    alert("북마크 삭제를 실패하였습니다.");
+    if (res.data) {
+      checkedBtn.style.display = "none";
+      uncheckedBtn.style.display = "block";
+      alert("북마크를 삭제하였습니다.");
+    } else {
+      alert("북마크 삭제를 실패하였습니다.");
+    }
+  } catch (e) {
+    alert("오류 발생");
   }
 };
 
@@ -112,19 +116,23 @@ const uncheckedClickHandler = async (
   contentName,
   categoryId
 ) => {
-  const res = await axios.post("../php/addBookmark.php", {
-    userId,
-    categoryId,
-    contentId,
-    contentName,
-  });
+  try {
+    const res = await axios.post("../php/addBookmark.php", {
+      userId,
+      categoryId,
+      contentId,
+      contentName,
+    });
 
-  if (res.data) {
-    uncheckedBtn.style.display = "none";
-    checkedBtn.style.display = "block";
-    alert("북마크를 추가하였습니다.");
-  } else {
-    alert("북마크 추가를 실패하였습니다.");
+    if (res.data) {
+      uncheckedBtn.style.display = "none";
+      checkedBtn.style.display = "block";
+      alert("북마크를 추가하였습니다.");
+    } else {
+      alert("북마크 추가를 실패하였습니다.");
+    }
+  } catch (e) {
+    alert("오류 발생");
   }
 };
 
@@ -135,10 +143,8 @@ const initBookmark = async (categoryId, contentId, title) => {
   }
 
   try {
-    const checkedBtn = document.querySelector(".bookmark-column .checkedBtn");
-    const uncheckedBtn = document.querySelector(
-      ".bookmark-column .uncheckedBtn"
-    );
+    const checkedBtn = document.querySelector(".checkedBtn");
+    const uncheckedBtn = document.querySelector(".uncheckedBtn");
 
     checkedBtn.addEventListener("click", () =>
       checkedClickHandler(checkedBtn, uncheckedBtn, userId, contentId)
@@ -218,6 +224,21 @@ const displayTvDetail = (data, contentId, categoryId) => {
   initBookmark(categoryId, contentId, name);
 };
 
+const submitBtnClickHandler = async (contentId) => {
+  const comment_field = document.querySelector(".comment-field");
+  const new_comment = comment_field.value;
+  try {
+    const res = await axios.post("../php/createComment.php", {
+      contentId,
+      new_comment,
+    });
+    
+  
+  } catch (e) {
+    alert("오류");
+  }
+};
+
 // detail페이지에 데이터를 뿌려주는 함수이다.
 // 영화와 TV Show는 서로 함수가 다르기 때문에
 // if문으로 구분하였다.
@@ -239,6 +260,12 @@ const displayDetail = async () => {
     data = await tvShow.getDetail(contentId);
     displayTvDetail(data, contentId, categoryId);
   }
+
+  // 댓글
+  const submit_button = document.querySelector(".submit-button");
+  submit_button.addEventListener("click", () =>
+    submitBtnClickHandler(contentId)
+  );
 };
 
 // 초기화 하는 함수이다.

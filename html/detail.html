@@ -26,6 +26,7 @@
     <script defer src="../js/categoryObj.js"></script>
     <script defer src="../js/api.js"></script>
     <script defer src="../js/detail.js"></script>
+    <script defer src="../js/addComment.js"></script>
 
     <title id="page-title"></title>
   </head>
@@ -77,6 +78,17 @@
           <span class="article-title">포스터</span>
           <div class="article-main poster-box"></div>
         </article>
+      </section>
+      <!-- Comment Section -->
+      <section id="comments" class="comment-area article-main container">
+        <div id="comment-head">
+          <!-- 갯수 조정 필요 -->
+          <span id="comments-count">0</span> Comment(s)
+        </div>
+        <input type="text" name="new_comment" class="comment-field"/>
+        <input type="button" value="comment" class="submit-button" />
+        <!-- <button type="submit" onclick="createComment()">Submit</button> -->
+        <div id="comment-rows"></div>
       </section>
     </main>
 

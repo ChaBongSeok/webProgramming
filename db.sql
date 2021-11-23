@@ -22,3 +22,10 @@ CREATE TABLE `bookmark` (
     `contentId` INT NOT NULL,
     `contentName` TEXT NOT NULL
 );
+
+CREATE TABLE `comments` (
+    `contentId` INT,
+    `date` DATETIME,
+    `comment` TEXT NOT NULL,
+    `userName` TEXT
+);
