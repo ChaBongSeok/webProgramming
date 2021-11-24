@@ -261,6 +261,7 @@ const submitBtnClickHandler = async (contentId) => {
   const new_comment = comment_field.value;
   const userEmail = JSON.parse(localStorage.getItem("MovieAgora")).Email;
   try {
+    if (new_comment === "") return;
     const res = await axios.post("../php/createComment.php", {
       userEmail,
       contentId,
