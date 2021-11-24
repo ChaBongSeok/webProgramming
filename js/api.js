@@ -9,7 +9,7 @@ const LANGUAGE = "ko-KR";
  * @param {string} obj_dst
  * @returns {array}
  */
-// api 호출 함수가 매우 많기 때문에 중복되는 부분을 함수로 분리시켰다.
+// path parameter, query, 목적지 obj이름을 받아서 결과 data를 반환하는 함수.
 const getTmdbData = async (path, query = "", obj_dst = "results") => {
   try {
     // 매개변수로 받은 Path parameter, Query string을 조합한 url에 데이터를 요청한다.
@@ -18,8 +18,6 @@ const getTmdbData = async (path, query = "", obj_dst = "results") => {
     );
     // 요청을 성공적으로 처리한 경우
     if (response.status == 200) {
-      // 매개변수로 받은 최종목적지 객체이름이 null이 아니면 response.data의 해당 이름의 객체를 반환하고
-      // null이면 response.data를 반환한다. 대부분이 results이기 때문에 default값으로 지정해 놓았다.
       return obj_dst ? response.data[`${obj_dst}`] : response.data;
     } else {
       alert("데이터를 불러오지 못하였습니다.");

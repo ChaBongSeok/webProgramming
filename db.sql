@@ -25,7 +25,7 @@ CREATE TABLE `bookmark` (
 
 CREATE TABLE `comments` (
     `contentId` INT,
-    `date` DATETIME,
+    `timestamp` timestamp,
     `comment` TEXT NOT NULL,
-    `userName` TEXT
+    `userEmail` TEXT
 );

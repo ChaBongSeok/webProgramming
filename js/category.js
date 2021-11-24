@@ -70,6 +70,7 @@ const displayCategoryContents = async (category_id, sorting_id, genre_id) => {
 const init = async () => {
   displayCategoryContents(category_id, sorting_id, genre_id);
   // displaySorting(tvShow.airingToday, sorting_items);
+  console.log(getParam("title"));
 };
 
 init();
