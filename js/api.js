@@ -64,7 +64,7 @@ const movie = {
   getDiscover: async (page, genre) =>
     await getTmdbData(
       "/discover/movie",
-      `&region=kr&language=${LANGUAGE}&sort_by=popularity.desc
+      `&language=${LANGUAGE}&sort_by=popularity.desc
         &include_adult=true&include_video=true&page=${page}&with_genres=${genre}&with_watch_monetization_types=flatrate`
     ),
   // 영화 장르 목록들을 반환한다.
@@ -104,7 +104,7 @@ const tvShow = {
   getDiscover: async (page, genre) =>
     await getTmdbData(
       "/discover/tv",
-      `&language=${LANGUAGE}&watch_region=kr&sort_by=popularity.desc
+      `&language=${LANGUAGE}&sort_by=popularity.desc
         &include_adult=true&include_video=true&page=${page}&with_genres=${genre}&with_watch_monetization_types=flatrate`
     ),
   // tv show 장르 목록들을 반환한다.

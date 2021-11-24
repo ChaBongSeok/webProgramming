@@ -149,3 +149,30 @@ article {
 .poster-container:hover .poster-box::-webkit-scrollbar-thumb {
   visibility: visible;
 }
+
+/* Comment section */
+#comments .submit-button {
+  background-color: rgb(59, 59, 59);
+  color: bisque;
+  margin: 0.5rem auto 2rem auto;
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+}
+
+#comments.container {
+  border-top: 3px solid #fbc500;
+  width: 80%;
+}
+
+#comment-head {
+  margin: 1rem auto 1rem;
+}
+
+#comments .comment-field {
+  width: 100%;
+  background-color: rgb(59, 59, 59);
+  border-color: rgb(133, 133, 133);
+  font-size: 1.3rem;
+  color: bisque;
+  resize: none;
+}

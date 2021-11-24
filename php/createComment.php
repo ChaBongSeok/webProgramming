@@ -7,13 +7,13 @@ $contentId = $_POST["contentId"];
 $userEmail = $_POST["userEmail"];
 $comment = $_POST["new_comment"];
 
-if ($comment != null) {
-    $sql = "INSERT INTO `comments` (`contentId`, `userEmail`, `comment`, `timestamp`)
-    VALUES ('$contentId', '$userEmail', '$comment')";
-    $db->query($sql);
-    echo true;  // 성공
+$sql = "INSERT INTO `comments` (`contentId`, `comment`, `userEmail`)
+    VALUES ('$contentId', '$comment', '$userEmail')";
+$res = $db->query($sql);
+if ($res) {
+    echo json_encode(true, JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK);;  // 성공
 } else {
-    echo false; // 실패
+    echo json_encode(false, JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK);; // 실패
 }
 
 mysqli_close($db);

@@ -190,7 +190,8 @@ const initBookmark = async (categoryId, contentId, title) => {
     // db에 해당 content가 북마크 되어 있을 때
     if (res.data) {
       checkedBtn.style.display = "block";
-    } else {// 북마크 되어 있지 않을 때
+    } else {
+      // 북마크 되어 있지 않을 때
       uncheckedBtn.style.display = "block";
     }
   } catch (e) {
@@ -213,6 +214,7 @@ const displayMovieDetail = (data, contentId, categoryId) => {
   } = data;
   // 페이지를 구성하는 데이터들을 추가
   initBookmark(categoryId, contentId, title);
+  readComments(contentId);
   setPageTitle(title);
   setBgImg(getImageUrl(backdrop_path, 500));
   setRepresentativeImg(getImageUrl(poster_path));
@@ -238,8 +240,9 @@ const displayTvDetail = (data, contentId, categoryId) => {
     episode_run_time,
     status,
   } = data;
-    // 페이지를 구성하는 데이터들을 추가
+  // 페이지를 구성하는 데이터들을 추가
   initBookmark(categoryId, contentId, name);
+  readComments(contentId);
   setPageTitle(name);
   setBgImg(getImageUrl(backdrop_path, 500));
   setRepresentativeImg(getImageUrl(poster_path));
@@ -252,15 +255,39 @@ const displayTvDetail = (data, contentId, categoryId) => {
   setPosterImgs(contentId, categoryId);
 };
 
+// 댓글 추가 함수
 const submitBtnClickHandler = async (contentId) => {
   const comment_field = document.querySelector(".comment-field");
   const new_comment = comment_field.value;
+  const userEmail = JSON.parse(localStorage.getItem("MovieAgora")).Email;
   try {
     const res = await axios.post("../php/createComment.php", {
+      userEmail,
       contentId,
       new_comment,
     });
+    if (res.data) {
+      // TODO: 여기다 동적으로 html tag 생성해서 부모 tag에 추가
+      alert("댓글을 추가하였습니다");
+    } else {
+      alert("댓글 추가 실패");
+    }
   } catch (e) {
+    alert("오류");
+  }
+};
+
+// 각 contentId에 맞는 댓글 불러오기
+// 댓글 객체 배열 받아옴
+const readComments = async (contentId) => {
+  try {
+    const response = await axios.post("../php/readComment.php", { contentId });
+    if (response.data) {
+      // TODO: 여기다 동적으로 html tag 생성해서 부모 tag에 추가
+    } else {
+      alert("댓글을 불러오는데 실패하였습니다.");
+    }
+  } catch (error) {
     alert("오류");
   }
 };
