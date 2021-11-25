@@ -24,7 +24,7 @@ const getTmdbData = async (path, query = "", obj_dst = "results") => {
 const getImageUrl = (path, width = 200) =>
   `https://image.tmdb.org/t/p/w${width}${path}`;
 
-// 영화와 관련된 api호출 함수들이 있는 객체.
+// 영화와 관련된 api호출 함수들이 있는 객체이다.
 const movie = {
   // id를 받아서 해당 영화의 상세정보를 반환한다.
   getDetail: async (movieId) =>
@@ -79,7 +79,7 @@ const movie = {
   },
 };
 
-// TV Show와 관련된 api호출 함수들이 있는 객체.
+// TV Show와 관련된 api호출 함수들이 있는 객체이다.
 const tvShow = {
   // id를 받아서 해당 tv show의 상세정보를 반환한다.
   getDetail: async (tvId) =>
@@ -115,7 +115,7 @@ const tvShow = {
   },
 };
 
-// 현재 트렌드인 TV Show와 영화 api호출 함수들이 있는 객체.
+// 현재 트렌드인 TV Show와 영화 api호출 함수들이 있는 객체이다.
 const trend = {
   getTrend_tv: async () => await getTmdbData("/trending/tv/week"),
   getTrend_movie: async () => await getTmdbData("/trending/movie/week"),
