@@ -25,7 +25,7 @@ const displayGenre = async (apiFunction, parentNode, category) => {
     const { name, id } = genre;
     const link = document.createElement("a");
     link.innerHTML = name;
-    // parameter로 name을 넘기기 위해서 '&'를 ',' 로 변경.
+    // parameter로 name을 넘기기 위해서 '&'를 ',' 로 바꿔준다.
     const formatName = name.replace(" &", ",");
     link.href = `../html/category.html?category=${category}&genreId=${id}&title=${formatName}`;
     parentNode.appendChild(link);
