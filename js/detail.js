@@ -157,7 +157,7 @@ const uncheckedClickHandler = async (
 // 처음 detail page를 열었을때 해당 content의 북마크 여부를 체크
 const initBookmark = async (categoryId, contentId, title) => {
   // localstorage에서 로그인된 계정의 id를 가져온다.
-  const userId = JSON.parse(localStorage.getItem("MovieAgora")).ID;
+  const userId = JSON.parse(localStorage.getItem("MovieAgora"))?.ID;
   // 로그인된 상태가 아니라면 바로 함수를 종료(버튼 2가지 모두 추가하지 않는다)
   if (!userId) {
     return;
@@ -339,6 +339,13 @@ const submitBtnClickHandler = async (contentId) => {
 // 각 contentId에 맞는 댓글 불러오기
 const readComments = async (contentId) => {
   try {
+    // localstorage에서 로그인된 계정의 id를 가져온다.
+    const userId = JSON.parse(localStorage.getItem("MovieAgora"))?.ID;
+    if (!userId) {
+      document.querySelector("#comments .comment-field").style.display = "none";
+      document.querySelector("#comments .submit-button").style.display = "none";
+    }
+
     // 댓글 객체 배열 받아옴
     const response = await axios.post("../php/readComment.php", { contentId });
     if (response.data) {
