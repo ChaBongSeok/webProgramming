@@ -176,3 +176,27 @@ article {
   color: bisque;
   resize: none;
 }
+
+.comment-row {
+  border-top: 1px solid bisque;
+  margin-bottom: 1.5rem;
+  padding-top: 0.5em;
+}
+
+.comment-area {
+  margin-bottom: 20%;
+}
+
+.comment-date {
+  font-size: 0.9rem;
+}
+.comment-content {
+  font-size: 1.3rem;
+  margin-top: 7px;
+}
+
+/* footer */
+footer {
+  color: white;
+  margin-bottom: 5%;
+}

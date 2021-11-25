@@ -2,14 +2,7 @@ const API_KEY = "6434c249f9a6bef6cfb5bb4aa624e097";
 const TMDB_MAIN_ADDRESS = "api.themoviedb.org";
 const LANGUAGE = "ko-KR";
 
-/**
- *
- * @param {string} path
- * @param {string} query
- * @param {string} obj_dst
- * @returns {array}
- */
-// path parameter, query, 목적지 obj이름을 받아서 결과 data를 반환하는 함수.
+// path parameter, query, 결과 데이터 내부 key 이름을 받아서 value를 반환하는 함수.
 const getTmdbData = async (path, query = "", obj_dst = "results") => {
   try {
     // 매개변수로 받은 Path parameter, Query string을 조합한 url에 데이터를 요청한다.
@@ -37,31 +30,31 @@ const movie = {
   getDetail: async (movieId) =>
     await getTmdbData(`/movie/${movieId}`, `&language=${LANGUAGE}`, null),
   // 현대 상영중인 영화들을 반환한다.
-  getNowPlaying: async (page) =>
+  getNowPlaying: async (page = 1) =>
     await getTmdbData(
       "/movie/now_playing",
       `&language=${LANGUAGE}&page=${page}`
     ),
   // 인기 영화들을 반환한다.
-  getPopular: async (page) =>
+  getPopular: async (page = 1) =>
     await getTmdbData(
       "/movie/popular",
       `&language=${LANGUAGE}&page=${page}&region=kr`
     ),
   // 평가가 높은 영화들을 반환한다.
-  getTopRated: async (page) =>
+  getTopRated: async (page = 1) =>
     await getTmdbData(
       "/movie/top_rated",
       `&language=${LANGUAGE}&page=${page}&region=kr`
     ),
   // 곧 개봉하는 영화들를 반환한다.
-  getUpComing: async (page) =>
+  getUpComing: async (page = 1) =>
     await getTmdbData(
       "/movie/upcoming",
       `&language=${LANGUAGE}&page=${page}&region=kr`
     ),
   // 매개변수로 받은 장르의 영화들을 반환한다.
-  getDiscover: async (page, genre) =>
+  getDiscover: async (genre, page = 1) =>
     await getTmdbData(
       "/discover/movie",
       `&language=${LANGUAGE}&sort_by=popularity.desc
@@ -92,16 +85,16 @@ const tvShow = {
   getDetail: async (tvId) =>
     await getTmdbData(`/tv/${tvId}`, `&language=${LANGUAGE}`, null),
   // 오늘 방영하는 방송들을 반환한다.
-  getAiringToday: async (page) =>
+  getAiringToday: async (page = 1) =>
     await getTmdbData("/tv/airing_today", `&language=${LANGUAGE}&page=${page}`),
   // 인기 방송들을 반환한다.
-  getPopular: async (page) =>
+  getPopular: async (page = 1) =>
     await getTmdbData("/tv/popular", `&language=${LANGUAGE}&page=${page}`),
   // 평가가 높은 방송들을 반환한다.
-  getTopRated: async (page) =>
+  getTopRated: async (page = 1) =>
     await getTmdbData("/tv/top_rated", `&language=${LANGUAGE}&page=${page}`),
   // 매개변수로 받은 장르의 방송들을 반환한다.
-  getDiscover: async (page, genre) =>
+  getDiscover: async (genre, page = 1) =>
     await getTmdbData(
       "/discover/tv",
       `&language=${LANGUAGE}&sort_by=popularity.desc

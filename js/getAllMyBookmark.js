@@ -20,7 +20,7 @@ const displayAllMyBookmark = async () => {
   const bookmark_container = document.querySelector(".bookmark-container");
   // 중복 추가 방지용
   if (bookmark_container.hasChildNodes()) return;
-  
+
   const bookmarks = await getAllMyBookmark();
   // 가져온 북마크마다 html tag로 포장해서 부모태그에 추가시킨다.
   bookmarks.forEach((bookmark) => {

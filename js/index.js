@@ -18,7 +18,7 @@ const displayTrend = async (apiFunction, parentNode, category) => {
   });
 };
 
-// 
+// 영화와 tv show, 각각의 장르를 불러와서 html에 추가하는 함수
 const displayGenre = async (apiFunction, parentNode, category) => {
   const genres = await apiFunction();
   genres.forEach((genre) => {
@@ -32,18 +32,18 @@ const displayGenre = async (apiFunction, parentNode, category) => {
   });
 };
 
-// localstorage에서 로그인 여부를 확인한 후 
+// localstorage에서 로그인 여부를 확인한 후
 // 로그인, 로그아웃, 마이페이지 display를 조정한다.
 const setHeaderBtn = () => {
   // 버튼들을 가져온다.
   const login_button = document.querySelector(".loginButton");
   const logout_button = document.querySelector(".logoutButton");
   const myPage_button = document.querySelector(".myPageButton");
-  // 들고온 모든 버튼에 click이벤트 적용
+  // 가져온 모든 버튼에 click이벤트 적용
   login_button.addEventListener("click", loginBtnClickHandler);
   logout_button.addEventListener("click", logoutBtnClickHandler);
   myPage_button.addEventListener("click", myPageBtnClickHandler);
-  
+
   // localstorage에 "MoieAgora"라는 키의 값을 가져온다.
   const myId = localStorage.getItem("MovieAgora");
 
@@ -52,7 +52,8 @@ const setHeaderBtn = () => {
     // login빼고 나머지 block처리
     logout_button.style.display = "block";
     myPage_button.style.display = "block";
-  } else {// 로그아웃 상태면
+  } else {
+    // 로그아웃 상태면
     // login만 block처리
     login_button.style.display = "block";
   }
@@ -80,10 +81,12 @@ const init = () => {
   const trend_movie = document.querySelector(".trend-movie");
   const genre_tv = document.querySelector(".genre-tv");
   const genre_movie = document.querySelector(".genre-movie");
-  // 
+  // 로그인, 로그아웃, 마이페이지 버튼 세팅
   setHeaderBtn();
+  // 화면에 tv, movie 트렌드 컨텐트들을 추가
   displayTrend(trend.getTrend_tv, trend_tv, category.tv);
   displayTrend(trend.getTrend_movie, trend_movie, category.movie);
+  // 화면에 tv, movie 장르 종류 추가
   displayGenre(tvShow.getGenre, genre_tv, category.tv);
   displayGenre(movie.getGenre, genre_movie, category.movie);
 };

@@ -213,18 +213,19 @@ const displayMovieDetail = (data, contentId, categoryId) => {
     status,
   } = data;
   // 페이지를 구성하는 데이터들을 추가
-  initBookmark(categoryId, contentId, title);
-  readComments(contentId);
-  setPageTitle(title);
-  setBgImg(getImageUrl(backdrop_path, 500));
-  setRepresentativeImg(getImageUrl(poster_path));
-  setInfoTitle(title);
-  setOverview(overview);
-  setGenreList(genres);
-  setAverageAndCnt(vote_average, vote_count);
-  setRuntime(runtime, categoryId);
-  setStatus(status);
-  setPosterImgs(contentId, categoryId);
+  addDataToScreen(
+    contentId,
+    categoryId,
+    title,
+    overview,
+    backdrop_path,
+    poster_path,
+    genres,
+    vote_average,
+    vote_count,
+    runtime,
+    status
+  );
 };
 
 // content가 tv show일 경우 화면에 data를 보여주는 함수
@@ -241,16 +242,45 @@ const displayTvDetail = (data, contentId, categoryId) => {
     status,
   } = data;
   // 페이지를 구성하는 데이터들을 추가
-  initBookmark(categoryId, contentId, name);
+  addDataToScreen(
+    contentId,
+    categoryId,
+    name,
+    overview,
+    backdrop_path,
+    poster_path,
+    genres,
+    vote_average,
+    vote_count,
+    episode_run_time,
+    status
+  );
+};
+
+// 데이터를 동적으로 html에 추가하는 함수
+const addDataToScreen = (
+  contentId,
+  categoryId,
+  title,
+  overview,
+  backdrop_path,
+  poster_path,
+  genres,
+  vote_average,
+  vote_count,
+  runtime,
+  status
+) => {
+  initBookmark(categoryId, contentId, title);
   readComments(contentId);
-  setPageTitle(name);
+  setPageTitle(title);
   setBgImg(getImageUrl(backdrop_path, 500));
   setRepresentativeImg(getImageUrl(poster_path));
-  setInfoTitle(name);
+  setInfoTitle(title);
   setOverview(overview);
   setGenreList(genres);
   setAverageAndCnt(vote_average, vote_count);
-  setRuntime(episode_run_time, categoryId);
+  setRuntime(runtime, categoryId);
   setStatus(status);
   setPosterImgs(contentId, categoryId);
 };
@@ -260,15 +290,43 @@ const submitBtnClickHandler = async (contentId) => {
   const comment_field = document.querySelector(".comment-field");
   const new_comment = comment_field.value;
   const userEmail = JSON.parse(localStorage.getItem("MovieAgora")).Email;
+
   try {
+    // 빈 댓글로 comment 버튼 누르면
     if (new_comment === "") return;
+    // post 준비
     const res = await axios.post("../php/createComment.php", {
       userEmail,
       contentId,
       new_comment,
     });
     if (res.data) {
-      // TODO: 여기다 동적으로 html tag 생성해서 부모 tag에 추가
+      // 유저이름
+      const userName = document.createElement("div");
+      userName.className = "user-name";
+      userName.innerText = userEmail;
+
+      // 댓글 내용
+      const contentEL = document.createElement("div");
+      contentEL.className = "comment-content";
+      contentEL.innerText = new_comment;
+
+      // 댓글 Element 추가
+      const commentEL = document.createElement("div");
+      commentEL.className = "comment-row";
+      commentEL.appendChild(userName);
+      commentEL.appendChild(contentEL);
+
+      document.getElementById("comment-rows").prepend(commentEL);
+
+      // 새로운 댓글 작성을 위해 value값 초기화
+      comment_field.value = "";
+
+      // 댓글개수 카운트 증가
+      const countEL = document.getElementById("comments-count");
+      const count = countEL.innerText;
+      countEL.innerText = parseInt(count) + 1;
+
       alert("댓글을 추가하였습니다");
     } else {
       alert("댓글 추가 실패");
@@ -279,12 +337,42 @@ const submitBtnClickHandler = async (contentId) => {
 };
 
 // 각 contentId에 맞는 댓글 불러오기
-// 댓글 객체 배열 받아옴
 const readComments = async (contentId) => {
   try {
+    // 댓글 객체 배열 받아옴
     const response = await axios.post("../php/readComment.php", { contentId });
     if (response.data) {
-      // TODO: 여기다 동적으로 html tag 생성해서 부모 tag에 추가
+      response.data.forEach((existComment) => {
+        const { userEmail, timestamp, comment } = existComment;
+        // 유저이름
+        const userName = document.createElement("div");
+        userName.className = "user-name";
+        userName.innerText = userEmail;
+
+        // 날짜
+        const dateEL = document.createElement("div");
+        dateEL.className = "comment-date";
+        dateEL.innerText = timestamp;
+
+        // 댓글 내용
+        const contentEL = document.createElement("div");
+        contentEL.className = "comment-content";
+        contentEL.innerText = comment;
+
+        // 댓글 Element 추가
+        const commentEL = document.createElement("div");
+        commentEL.className = "comment-row";
+        commentEL.appendChild(userName);
+        commentEL.appendChild(dateEL);
+        commentEL.appendChild(contentEL);
+
+        document.getElementById("comment-rows").appendChild(commentEL);
+
+        // 댓글개수 카운트 증가
+        const countEL = document.getElementById("comments-count");
+        const count = countEL.innerText;
+        countEL.innerText = parseInt(count) + 1;
+      });
     } else {
       alert("댓글을 불러오는데 실패하였습니다.");
     }

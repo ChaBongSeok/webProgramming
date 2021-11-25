@@ -4,7 +4,7 @@ $_POST = JSON_DECODE(file_get_contents("php://input"), true);
 
 $contentId = $_POST["contentId"];
 
-$sql = "SELECT * FROM comments WHERE contentId = '$contentId'";
+$sql = "SELECT * FROM comments WHERE contentId = '$contentId' ORDER BY timestamp DESC";
 
 // 불러온 댓글
 $data = array();
